@@ -23,3 +23,7 @@ while True:
     jour = int(input("Entrez un jour(Entre 1 et 365) ou 0 pour quitter : "))
     if jour == 0:
         break
+    elif jour < 1 or jour > 365:
+        print("Jour invalide, veuillez entrez un nombre entre 1 et 365")
+    else: 
+        print("Jour",jour,":",round(liste_infectes[jour-1],2), "personnes infectées")
