@@ -1,4 +1,4 @@
-
+#Initiation
 population = 11500000
 nombre_infectes = 100
 rencontre_jour = 10
@@ -21,11 +21,24 @@ for jour in range(0,365):
 
     liste_infectes.append(nombre_infectes)
     liste_jours.append(jour)
-
     liste_nouvelles_infections.append(nombre_infectes - liste_infectes[jour])
 
-#Calcul nombre moyen de personne infecté par jour.
-nombre_moyen_infectes = sum(liste_infectes) / len(liste_infectes)
+# Fonction pour calculer le nombre moyen de personnes infectées par jour
+def calculer_nombre_moyen_infectes():
+    return round(sum(liste_infectes) / len(liste_infectes), 2)
+
+# Fonction pour calculer le nombre moyen de nouvelles infections par jour
+def calculer_nombre_moyen_nouvelles_infections():
+    return round(sum(liste_nouvelles_infections) / len(liste_nouvelles_infections), 2)
+
+# Fonction pour afficher le nombre de personnes infectées pour un jour donné
+def afficher_nombre_infectes(jour):
+    print(f"Jour {jour}: {round(liste_infectes[jour-1], 2)} personnes infectées")
+
+# Fonction pour afficher le nombre moyen de personnes infectées par jour sur l'ensemble de l'année
+def afficher_nombre_moyen():
+    print(f"Le nombre moyen de personnes infectées par jour sur l'ensemble de l'année est de : {round(calculer_nombre_moyen_infectes(), 2)}")
+    print(f"Le nombre moyen de nouvelles infections par jour sur l'ensemble de l'année est de : {round(calculer_nombre_moyen_nouvelles_infections(), 2)}")
 
 #Affichage des résultats
 while True:
@@ -35,5 +48,5 @@ while True:
     elif jour < 1 or jour > 365:
         print("Jour invalide, veuillez entrez un nombre entre 1 et 365")
     else: 
-        print("Jour",jour,":",round(liste_infectes[jour-1],2), "personnes infectées")
-print("Le nombre moyen de personnes infectés par jour sur l'ensemble de l'année est de :",round(nombre_moyen_infectes,2))
+        afficher_nombre_infectes(jour)
+afficher_nombre_moyen()
