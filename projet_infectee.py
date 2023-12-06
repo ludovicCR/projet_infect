@@ -18,3 +18,8 @@ for jour in range(2,366):
     liste_infectes.append(nombre_infectes)
     liste_jours.append(jour)
 
+#Affichage des résultats
+while True:
+    jour = int(input("Entrez un jour(Entre 1 et 365) ou 0 pour quitter : "))
+    if jour == 0:
+        break
