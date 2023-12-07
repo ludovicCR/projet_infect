@@ -29,7 +29,7 @@ def simuler_propagation():
 
 #Fonction du pic maximum :
 def trouver_pic_max():
-    indice_max = liste_infectes.index(max(liste_infectes))
+    indice_max = liste_infectes.index((liste_infectes))
     jour_pic_maximum = liste_jours[indice_max]
     return jour_pic_maximum
 
@@ -43,12 +43,12 @@ def calculer_nombre_moyen_nouvelles_infections():
 
 # Fonction pour afficher le nombre de personnes infectées pour un jour donné
 def afficher_nombre_infectes(jour):
-    print(f"Jour {jour}: {round(liste_infectes[jour-1], 2)} personnes infectées")
+    print(f"Jour {jour}: {round(liste_infectes[jour-1])} personnes infectées")
 
 # Fonction pour afficher le nombre moyen de personnes infectées par jour sur l'ensemble de l'année
 def afficher_nombre_moyen():
-    print(f"Le nombre moyen de personnes infectées par jour sur l'ensemble de l'année est de : {round(calculer_nombre_moyen_infectes(), 2)}")
-    print(f"Le nombre moyen de nouvelles infections par jour sur l'ensemble de l'année est de : {round(calculer_nombre_moyen_nouvelles_infections(), 2)}")
+    print(f"Le nombre moyen de personnes infectées par jour sur l'ensemble de l'année est de : {round(calculer_nombre_moyen_infectes())}")
+    print(f"Le nombre moyen de nouvelles infections par jour sur l'ensemble de l'année est de : {round(calculer_nombre_moyen_nouvelles_infections())}")
 
 #Affichage des résultats
 while True:
@@ -61,5 +61,5 @@ while True:
         print("Jour invalide, veuillez entrez un nombre entre 1 et 365")
     else: 
         afficher_nombre_infectes(jour)
-print(f"Le jour du pix maximum de personnes infectées est le jour :{jour_pic_max}")
+print(f"Le jour du pic maximum de personnes infectées est le jour :{jour_pic_max}")
 afficher_nombre_moyen()
