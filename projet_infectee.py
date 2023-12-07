@@ -12,17 +12,26 @@ liste_nouvelles_infections = [nombre_infectes]
 
 #Fonction avec Boucle pour calculer nombre infecté chaque jours !
 def simuler_propagation():
-    for jour in range(0,365):
+    for jour in range(0,730): #Ajout de 2 ans.
+        if jour >= 365: #Ajout du vaccin
+            rencontre_jour = 4
         if 30 <= jour <= 75:
             rencontre_jour = 3
         else:
             rencontre_jour = 10
+
         niag = liste_infectes[jour] * (1 - PG)
         nombre_infectes = niag + (POPULATION - niag) * rencontre_jour * niag / POPULATION * PT
 
         liste_infectes.append(nombre_infectes)
         liste_jours.append(jour)
         liste_nouvelles_infections.append(nombre_infectes - liste_infectes[jour])
+
+#Fonction du pic maximum :
+def trouver_pic_max():
+    indice_max = liste_infectes.index(max(liste_infectes))
+    jour_pic_maximum = liste_jours[indice_max]
+    return jour_pic_maximum
 
 # Fonction pour calculer le nombre moyen de personnes infectées par jour
 def calculer_nombre_moyen_infectes():
@@ -43,12 +52,14 @@ def afficher_nombre_moyen():
 
 #Affichage des résultats
 while True:
-    jour = int(input("Entrez un jour(Entre 1 et 365) ou 0 pour quitter : "))
+    jour = int(input("Entrez un jour(Entre 1 et 730) ou 0 pour quitter : "))
     simuler_propagation()
+    jour_pic_max = trouver_pic_max()
     if jour == 0:
         break
-    elif jour < 1 or jour > 365:
+    elif jour < 1 or jour > 730:
         print("Jour invalide, veuillez entrez un nombre entre 1 et 365")
     else: 
         afficher_nombre_infectes(jour)
+print(f"Le jour du pix maximum de personnes infectées est le jour :{jour_pic_max}")
 afficher_nombre_moyen()
