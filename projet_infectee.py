@@ -29,7 +29,7 @@ def simuler_propagation():
 
 #Fonction du pic maximum :
 def trouver_pic_max():
-    indice_max = liste_infectes.index((liste_infectes))
+    indice_max = liste_infectes.index(max(liste_infectes))
     jour_pic_maximum = liste_jours[indice_max]
     return jour_pic_maximum
 
@@ -61,5 +61,5 @@ while True:
         print("Jour invalide, veuillez entrez un nombre entre 1 et 365")
     else: 
         afficher_nombre_infectes(jour)
-print(f"Le jour du pic maximum de personnes infectées est le jour :{jour_pic_max}")
+print(f"Le jour du pix maximum de personnes infectées est le jour :{jour_pic_max}")
 afficher_nombre_moyen()
