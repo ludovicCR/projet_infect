@@ -1,5 +1,5 @@
 #Initiation
-population = 11500000
+POPULATION = 11500000
 nombre_infectes = 100
 rencontre_jour = 10
 PT = 0.01
@@ -10,18 +10,19 @@ liste_infectes = [nombre_infectes]
 liste_jours = [1]
 liste_nouvelles_infections = [nombre_infectes]
 
-#Boucle pour calculer nombre infecté chaque jours !
-for jour in range(0,365):
-    if 30 <= jour <= 75:
-        rencontre_jour = 3
-    else:
-        rencontre_jour = 10
-    niag = liste_infectes[jour] * (1 - PG)
-    nombre_infectes = niag + (population - niag) * rencontre_jour * niag / population * PT
+#Fonction avec Boucle pour calculer nombre infecté chaque jours !
+def simuler_propagation():
+    for jour in range(0,365):
+        if 30 <= jour <= 75:
+            rencontre_jour = 3
+        else:
+            rencontre_jour = 10
+        niag = liste_infectes[jour] * (1 - PG)
+        nombre_infectes = niag + (POPULATION - niag) * rencontre_jour * niag / POPULATION * PT
 
-    liste_infectes.append(nombre_infectes)
-    liste_jours.append(jour)
-    liste_nouvelles_infections.append(nombre_infectes - liste_infectes[jour])
+        liste_infectes.append(nombre_infectes)
+        liste_jours.append(jour)
+        liste_nouvelles_infections.append(nombre_infectes - liste_infectes[jour])
 
 # Fonction pour calculer le nombre moyen de personnes infectées par jour
 def calculer_nombre_moyen_infectes():
@@ -43,6 +44,7 @@ def afficher_nombre_moyen():
 #Affichage des résultats
 while True:
     jour = int(input("Entrez un jour(Entre 1 et 365) ou 0 pour quitter : "))
+    simuler_propagation()
     if jour == 0:
         break
     elif jour < 1 or jour > 365:
